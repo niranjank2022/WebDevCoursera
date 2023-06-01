@@ -1,0 +1,28 @@
+body {
+    background-color: brown;
+}
+
+.nav-bar {
+    border: 1px solid black;
+    background-color: greenyellow;
+}
+
+.nav-bar > a {
+    /* border: 2px solid black; */
+    margin: 20px;;
+}
+
+.inner-box {
+    background-color: yellow;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: violet;
+}
+
+form {
+    background-color: aquamarine;
+    color: gray;
+    padding: 40px;
+}

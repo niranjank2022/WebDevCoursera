@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Example</title>
+</head>
+<body>
+  <h1>Form Example</h1>
+
+  <form id="myForm" onsubmit="submitForm(event)" action="">
+    <label for="text">Text Input:</label>
+    <input type="text" id="text" name="text" value="">
+
+    <br><br>
+
+    <label for="email">Email Input:</label>
+    <input type="email" id="email" name="email" value="">
+
+    <br><br>
+
+    <label for="password">Password Input:</label>
+    <input type="password" id="password" name="password" value="">
+
+    <br><br>
+
+    <label for="checkbox">Checkbox:</label>
+    <input type="checkbox" id="checkbox" name="checkbox" value="">
+
+    <br><br>
+
+    <label for="radio">Radio Buttons:</label>
+    <input type="radio" id="radio1" name="radio" value="option1">
+    <label for="radio1">Option 1</label>
+    <input type="radio" id="radio2" name="radio" value="option2">
+    <label for="radio2">Option 2</label>
+
+    <br><br>
+
+    <label for="select">Select:</label>
+    <select id="select" name="select">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+
+    <br><br>
+
+    <label for="textarea">Textarea:</label>
+    <textarea id="textarea" name="textarea"></textarea>
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // Prevent form submission
+
+      var form = document.getElementById("myForm");
+      var formData = new FormData(form); // Get form data
+
+      var tableData = "<table><tr><th>Element Type</th><th>Name</th><th>Value</th></tr>";
+
+      for (var pair of formData.entries()) {
+        var elementType = getElementType(pair[0]);
+        var name = pair[0];
+        var value = pair[1];
+
+        tableData += "<tr><td>" + elementType + "</td><td>" + name + "</td><td>" + value + "</td></tr>";
+      }
+
+      tableData += "</table>";
+
+      // Display the name-value pairs in a new page
+      var newWindow = window.open("", "_blank");
+      newWindow.document.write(tableData);
+      newWindow.document.close();
+    }
+
+    function getElementType(name) {
+      var element = document.getElementById(name);
+
+      if (element.tagName.toLowerCase() === "input") {
+        if (element.type === "checkbox") {
+          return "Checkbox";
+        } else if (element.type === "radio") {
+          return "Radio";
+        } else {
+          return "Text";
+        }
+      } else if (element.tagName.toLowerCase() === "select") {
+        return "Select";
+      } else if (element.tagName.toLowerCase() === "textarea") {
+        return "Textarea";
+      }
+
+      return "Unknown";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NLP Captcha Validation</title>
+  <script>
+    function validateCaptcha() {
+      var captchaInput = document.getElementById('captchaInput').value;
+      var captchaValue = document.getElementById('captchaValue').value;
+
+      if (captchaInput === captchaValue) {
+        alert("Captcha validation successful!");
+        return true;
+      } else {
+        alert("Captcha validation failed!");
+        document.getElementById('captchaValue').value = "";
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>NLP Captcha Validation</h2>
+
+  <form onsubmit="return validateCaptcha();">
+    <label for="captchaInput">NLP Captcha:</label>
+    <input type="text" id="captchaInput" value="NLP Captcha Value" readonly><br><br>
+
+    <label for="captchaValue">Enter Captcha:</label>
+    <input type="text" id="captchaValue"><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
